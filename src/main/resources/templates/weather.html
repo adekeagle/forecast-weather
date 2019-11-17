@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forecat Weather</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1 align="center">Forecast Weather</h1>
+
+<div class="header input-group">
+    <input type="text" class="form-control" placeholder="City Name">
+    <span class="input-group-btn" style="width:0;">
+        <button class="btn btn-primary" type="button">Szukaj</button>
+    </span>
+</div>
+
+<div class="box-left">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <td><b>Name</b></td>
+            <td><b>Value</b></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Temperature:</td>
+            <td th:text="${weather.getMain().getTemp()} + ' ' + &#8451;">asdasd</td>
+        </tr>
+        <tr>
+            <td>Min. Temp.</td>
+            <td th:text="${weather.getMain().getTempMin()} + ' ' + &#8451;"></td>
+        </tr>
+        <tr>
+            <td>Max. Temp.</td>
+            <td th:text="${weather.getMain().getTempMax()} + ' ' + &#8451;"></td>
+        </tr>
+        <tr>
+            <td>Pressure</td>
+            <td th:text="${weather.getMain().getPressure()} + ' ' + hPa"></td>
+        </tr>
+        <tr>
+            <td>Humidity</td>
+            <td th:text="${weather.getMain().getHumidity()} + ' &#37;'"></td>
+        </tr>
+        <tr>
+            <td>wind</td>
+            <td th:text="${weather.getWind().getSpeed()} + ' km&#47;h'"></td>
+        </tr>
+        <tr>
+            <td>country</td>
+            <td th:text="${weather.getSys().getCountry()} + ', ' + ${weather.getName()}"></td>
+        </tr>
+        <tr>
+            <td th:text="${weather.getWeather().get(0).getMain()}"></td>
+            <td><img th:src="${urlIcon}" /><span th:text="${weather.getWeather().get(0).getDescription()}"></span> </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="box-right">
+    <img src="images/clouds.png" />
+</div>
+    <div class="footer"></div>
+<!--</div>-->
+</body>
+</html>
